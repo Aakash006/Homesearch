@@ -8,8 +8,8 @@ const Home = new mongoose.Schema(
         postalCode: { type: String, require: true },
         province: { type: String, require: true },
         country: { type: String, require: true },
-        listed: { type: Number, require: true },
-        sold: { type: Number, require: true },
+        listedPrice: { type: Number, require: true },
+        soldPrice: { type: Number, require: true },
     }
 );
 

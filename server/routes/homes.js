@@ -6,6 +6,8 @@ router.get('/', homeCtrl.getHomes);
 
 router.get('/neighbourhoods', homeCtrl.getNeighbourhoods);
 
+router.get('/average/:neighbourhood', homeCtrl.getNeighbourhoods);
+
 router.get('/:id', homeCtrl.findHomeById);
 
 router.post('/', homeCtrl.createHome);

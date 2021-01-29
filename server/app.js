@@ -2,11 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const homesRouter = require('./routes/homes.js');
+const cors = require('cors');
 require('dotenv/config');
 const app = express();
 
 const apiPort = 9000;
-
 
 // Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser:true});
@@ -17,8 +17,9 @@ con.on('open', function () {
 });
 
 // Middlewares
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
 app.use('/api/homes', homesRouter); // for all homes requests send request to homes router
 
 // Listen to server

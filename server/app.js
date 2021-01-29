@@ -18,8 +18,9 @@ con.on('open', function () {
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(cors());
+app.use(bodyParser.json());
+
 app.use('/api/homes', homesRouter); // for all homes requests send request to homes router
 
 // Listen to server

@@ -1,6 +1,9 @@
 import React from "react";
 import "../App.css";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import api from '../api';
+
+
 
 function AveragePrice() {
     return (

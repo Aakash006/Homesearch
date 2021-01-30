@@ -30,9 +30,9 @@ createHome = async (req, res) => {
         addNeighbourhood(toCreate.neighbourhood);
 
         const save = await toCreate.save().then(() => {
-            return res.json({message: true});
+            return res.json({success: true});
         }).catch((err) => {
-            return res.json({message: err});
+            return res.json({success: err});
         });
     }
 }
@@ -45,7 +45,7 @@ findHomeById = async (req, res) => {
             return res.json(response);
         }
     }).catch((err) => {
-        return res.json({message: err});
+        return res.json({success: err});
     });
 }
 
@@ -55,9 +55,9 @@ updateHome = async (req, res) => {
         { $set: { soldPrice:req.body.soldPrice }},
         (err, response) => {
             if (err) {
-                return res.json({message: err});
+                return res.json({success: false});
             } else {
-                return res.json(response);
+                return res.json({success: true});
             }
         }).catch((err) => {
             return res.json({message: err});
@@ -67,9 +67,9 @@ updateHome = async (req, res) => {
 deleteHome = async (req, res) => {
     const deleted = await Home.deleteOne({ _id: req.params.id }, (err, respose) => {
         if (err) {
-            return res.json({message: false});
+            return res.json({success: false});
         } else {
-            return res.json({message: true});
+            return res.json({success: true});
         }
     }).catch((err) => {
         return res.json({message: err});

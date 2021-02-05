@@ -9,7 +9,7 @@ const app = express();
 const apiPort = 9000;
 
 // Connect to DB
-mongoose.connect(process.env.DB_CONNECTION, {useNewUrlParser:true});
+mongoose.connect("mongodb://localhost/homesearch", {useNewUrlParser:true});
 const con = mongoose.connection;
 
 con.on('open', function () {

@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: 'Josefin Slab', serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .App-header {
@@ -32,11 +32,95 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-form {
+    width: 80%;
+}
+
+.form-label {
+    font-size: 28px;
+}
+
+.form-control {
+    font-size: 22px;
+}
+
+.badge {
+  padding: 4%;
+  margin-top: 5%;
+  font-size: 16px;
+}
+
+.houseCard {
+  margin-top: 5%;
+  margin-bottom: 2.5%;
+}
+
+.streetAd {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.extraAd {
+  font-size: 22px;
+}
+
+.updateBtn, .deleteBtn {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+
+.cancelBtn {
+  margin-left: 5%;
+}
+
+.navTitle {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.navLink {
+  font-size: 25px;
+}
+
+.pageTitle {
+    margin-top: 2%;
+    font-weight: bold;
+    position: relative;
+    align-items: center;
+    font-size: 50px;
+}
+
+.pageButton {
+    margin-top: 2%;
+    font-size: 20px;
+    height: 50%;
+    position: relative;
+    right: -62%;
+}
+
+.backButton {
+    margin-top: 2%;
+    height: 50%;
+    font-size: 20px;
+    position: relative;
+    right: -45%;
+}
+
+.neighbourhoodDD {
+    margin-top: 2%;
+    height: 50%;
+    position: relative;
+    right: -40%;
+}
+
+.ddItem {
+    font-size: 20px;
+}
+
+.avgPageTitle {
+    margin-top: 2%;
+    font-weight: bold;
+    position: relative;
+    right: -30%;
+    font-size: 60px;
 }

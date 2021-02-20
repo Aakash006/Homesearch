@@ -2,7 +2,6 @@ import React from "react";
 import "../App.css";
 import { Card, Badge } from "react-bootstrap";
 function HouseCard(props) {
-    console.log(props.house);
     return (
         <div>
             <Card className="houseCard" style={{ width: '18rem' }} bg="dark" text="white">

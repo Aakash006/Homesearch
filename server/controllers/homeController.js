@@ -1,6 +1,11 @@
 const Home = require('../models/homesModel');
 const Neighbourhood = require('../models/neighbourhoodsModel');
+const sgMail = require('@sendgrid/mail');
+require('dotenv').config();
 
+sgMail.setApiKey(process.env.SENDGRID_KEY)
+
+// This method retrieves all the properties that are in a users watchlist from the database
 getHomes = async (req, res) => {
     const homes = await Home.find({}, (err, response) => {
         if (err) {
@@ -12,11 +17,14 @@ getHomes = async (req, res) => {
         return res.status(400).json({message: err});
     });
 }
+
+// This method add a property that the user would like to add to their watchlist into the database
 createHome = async (req, res) => {
     if (!req.body) {
         return res.json({ message: 'You must provide a property' });
     } else {
         const toCreate = new Home({
+            email: req.body.email,
             streetAd: req.body.streetAd,
             city: req.body.city,
             neighbourhood: req.body.neighbourhood, 
@@ -24,23 +32,55 @@ createHome = async (req, res) => {
             province: req.body.province,
             country: req.body.country,
             listedPrice: req.body.listedPrice,
-            soldPrice: req.body.soldPrice
+            soldPrice: req.body.soldPrice,
+            mls: req.body.mls
         });
 
-        addNeighbourhood(toCreate.neighbourhood);
+        if (toCreate.neighbourhood !== '') {
+            addNeighbourhood(toCreate.neighbourhood);
+        }
 
-        const save = await toCreate.save().then(() => {
-            return res.json({success: true, message: ""});
+        const property = Home.find({streetAd: toCreate.streetAd}, (err, response) => {
+            if (response.length == 0) {
+                const save = toCreate.save().then(() => {
+                    if (toCreate.email !== null) {
+                        const message = {
+                            to: toCreate.email,
+                            from: {
+                                name: 'HomeSearch',
+                                email :'aakashpatel141@gmail.com'
+                            },
+                            subject: 'HomeSearch: ' + req.body.streetAd + ' has been added to your watchlist',
+                            text: req.body.streetAd + ' has been added to your watchlist',
+                            html: '<h1>' + req.body.streetAd + ' has been added to your watchlist</h1>',
+                        };
+                
+                        sgMail.send(message)
+                        .then(response => console.log('Email has been sent'))
+                        .catch((error) => console.error(error.message));
+                    }
+                    
+                    return res.json({success: true, message: ""});
+                }).catch((err) => {
+                    return res.json({success: false, message: err.message});
+                });
+            } else {
+                return res.json({success: false, message: "Property already exists"});
+            }
         }).catch((err) => {
-            return res.json({success: false, message: err});
+            return res.json({success: false, message: "Property could not be added"});
         });
     }
 }
 
+
+// This method updates an existing property in the database that has been edited by a user
 updateHome = async (req, res) => {
+    
     const update = await Home.updateOne(
         { _id: req.params.id },
-        { $set: { 
+        { $set: {
+            email: req.body.email,
             streetAd: req.body.streetAd,
             city: req.body.city,
             neighbourhood: req.body.neighbourhood,
@@ -48,11 +88,33 @@ updateHome = async (req, res) => {
             province: req.body.province,
             country: req.body.country,
             listedPrice: req.body.listedPrice,
-            soldPrice: req.body.soldPrice }},
+            soldPrice: req.body.soldPrice,
+            mls: req.body.mls }},
         (err, response) => {
             if (err) {
                 return res.status(404).json({success: false, message: err});
             } else {
+                if (req.body.neighbourhood !== '') {
+                    addNeighbourhood(req.body.neighbourhood);
+                }
+
+                if (req.body.email !== null) {
+                    const message = {
+                        to: req.body.email,
+                        from: {
+                            name: 'HomeSearch',
+                            email :'aakashpatel141@gmail.com'
+                        },
+                        subject: 'HomeSearch: ' + req.body.streetAd + ' has been updated in your watchlist',
+                        text: req.body.streetAd + ' has been updated in your watchlist',
+                        html: '<h1>' + req.body.streetAd + ' has been updated in your watchlist</h1>',
+                    };
+
+                    sgMail.send(message)
+                    .then(response => console.log('Email has been sent'))
+                    .catch((error) => console.error(error.message));
+                }
+                
                 return res.status(200).json({success: true, message: ""});
             }
         }).catch((err) => {
@@ -60,6 +122,8 @@ updateHome = async (req, res) => {
     });
 }
 
+
+// This method takes an ID of a property and finds the property in the database
 findHomeById = async (req, res) => {
     const home = await Home.findById({_id: req.params.id}, (err, response) => {
         if (err) {
@@ -72,13 +136,35 @@ findHomeById = async (req, res) => {
     });
 }
 
+
+// This method takes an ID of a property and deletes in from the database
 deleteHome = async (req, res) => {
     const home = await Home.findById({ _id: req.params.id });
     const deleted = await Home.deleteOne({ _id: req.params.id }, (err, response) => {
         if (err) {
             return res.status(404).json({success: false});
         } else {
-            checkNeighbourhoods(home.neighbourhood);
+            if (home.neighbourhood !== null && home.neighbourhood !== '') {
+                checkNeighbourhoods(home.neighbourhood);
+            }
+
+            if (home.email !== null) {
+                const message = {
+                    to: home.email,
+                    from: {
+                        name: 'HomeSearch',
+                        email :'aakashpatel141@gmail.com'
+                    },
+                    subject: 'HomeSearch: ' + home.streetAd + ' has been deleted from your watchlist',
+                    text: home.streetAd + '  deleted from your watchlist',
+                    html: '<h1>' + home.streetAd + '  deleted from your watchlist</h1>',
+                };
+
+                sgMail.send(message)
+                .then(response => console.log('Email has been sent'))
+                .catch((error) => console.error(error.message));
+            }
+
             return res.status(200).json({success: true});
         }
     }).catch((err) => {
@@ -86,6 +172,8 @@ deleteHome = async (req, res) => {
     });
 }
 
+
+// This method will return all the neibourhoods that are stored in the database
 getNeighbourhoods = async (req, res) => {
     const neighbourhoods = await Neighbourhood.find({}, (err, response) => {
         if (err) {
@@ -98,6 +186,8 @@ getNeighbourhoods = async (req, res) => {
     });
 }
 
+
+// This method will add a neighbourhood to the database
 addNeighbourhood = (neighbourhood) => {
     const neighbourhoods = Neighbourhood.find({name: neighbourhood}, (err, response) => {
         if (response.length == 0) {
@@ -113,6 +203,8 @@ addNeighbourhood = (neighbourhood) => {
     });
 }
 
+
+// This method will calculate an average for properties sold in a particular neighbourhood
 getAverage = async (req, res) => {
     const houses = Home.find({neighbourhood: req.params.neighbourhood}, (err, response) => {
         if (err) {
@@ -145,6 +237,7 @@ getAverage = async (req, res) => {
     });
 }
 
+// This method will check if a neighbourhood has any houses in the users watchlist and if it doesn't then the neighbourhood is deleted
 checkNeighbourhoods = async (neighbourhood) => {
     const houses = Home.find({neighbourhood: neighbourhood}, (err, response) => {
         if (err) {

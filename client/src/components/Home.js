@@ -57,7 +57,7 @@ class Home extends Component {
                     (<Row>
                             {this.state.homes.map((home) => 
                             <Col md="4">
-                                <Card className="houseCard" style={{ width: '18rem' }} bg="dark" text="white">
+                                <Card className="houseCard" style={{ width: '18rem' }} bg="dark" text="white" key={home._id}>
                                     <Card.Body>
                                         <Card.Title className="streetAd">{home.streetAd}</Card.Title>
                                         <Card.Text className="extraAd">

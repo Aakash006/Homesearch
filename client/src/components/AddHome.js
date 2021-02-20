@@ -10,6 +10,7 @@ class AddHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            email: '',
             streetAd: '',
             city: '',
             neighbourhood: '',
@@ -18,9 +19,15 @@ class AddHome extends Component {
             country: '',
             listedPrice: '',
             soldPrice: '',
+            mls: '',
             showSuccess: false,
             showError: false
         }
+    }
+
+    changeEmail = async event => {
+        const tempEmail = event.target.value;
+        this.setState({email: tempEmail});
     }
 
     changeStreetAd = async event => {
@@ -53,6 +60,11 @@ class AddHome extends Component {
         this.setState({country: tempCountry});
     }
 
+    changeMLS = async event => {
+        const tempMLS = event.target.value;
+        this.setState({mls: tempMLS});
+    }
+
     changeListed = async event => {
         const tempListed = event.target.value;
         this.setState({listedPrice: tempListed});
@@ -66,6 +78,7 @@ class AddHome extends Component {
     submitProperty = async (event) => {
         event.preventDefault();
         const payload = {
+            email: this.state.email,
             streetAd: this.state.streetAd,
             city: this.state.city,
             neighbourhood: this.state.neighbourhood,
@@ -73,7 +86,8 @@ class AddHome extends Component {
             province: this.state.province,
             country: this.state.country,
             listedPrice: this.state.listedPrice,
-            soldPrice: this.state.soldPrice
+            soldPrice: this.state.soldPrice,
+            mls: this.state.mls
         };
 
         await apis.createHome(payload).then(results => {
@@ -81,7 +95,7 @@ class AddHome extends Component {
                 toast.success('Property has been added');
                 console.log('created!');
             } else {
-                toast.error('Property could not be added, please check your input');
+                toast.error(`Property could not be added, ${results.data.message}`);
                 console.log('fail!');
             }
         }).catch((error) => {
@@ -100,10 +114,17 @@ class AddHome extends Component {
                     <Button href="/" className="backButton"variant="dark"><BsFillCaretLeftFill/> Home</Button>
                 </Row>
                 <Form className="home-form" onSubmit={this.submitProperty}>
+                    <Form.Row>
+                        <Form.Group>
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control onChange={this.changeEmail} type="email" placeholder="email@example.com"/>
+                            <Form.Text className="text-muted">Optional if you would like to get notifications for updates about this property</Form.Text>
+                        </Form.Group>
+                    </Form.Row>
                     <Row>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Street Address</Form.Label>
+                                <Form.Label>Street Address *</Form.Label>
                                 <Form.Control onChange={this.changeStreetAd} placeholder="Enter Street Address" required/>
                             </Form.Group>
                         </Col>
@@ -115,7 +136,7 @@ class AddHome extends Component {
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Neighbourhood</Form.Label>
+                                <Form.Label>Neighbourhood *</Form.Label>
                                 <Form.Control onChange={this.changeNeighbourhood} placeholder="Enter Neighbourhood" required/>
                             </Form.Group>
                         </Col>
@@ -147,7 +168,14 @@ class AddHome extends Component {
                     <Row>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Listed Price</Form.Label>
+                                <Form.Label>MLS Number</Form.Label>
+                                <Form.Control onChange={this.changeMLS} placeholder="Enter MLS #"/>
+                            </Form.Group>
+                        </Col>
+
+                        <Col>
+                            <Form.Group>
+                                <Form.Label>Listed Price *</Form.Label>
                                 <Form.Control onChange={this.changeListed} placeholder="Enter Listed Price" required/>
                             </Form.Group>
                         </Col>

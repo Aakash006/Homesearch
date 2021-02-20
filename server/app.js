@@ -9,7 +9,7 @@ const app = express();
 const apiPort = 9000;
 
 // Connect to DB
-mongoose.connect("mongodb://localhost/homesearch", {useNewUrlParser:true});
+mongoose.connect(process.env.MONGODB_ATLAS, {useNewUrlParser:true});
 const con = mongoose.connection;
 
 con.on('open', function () {
@@ -24,10 +24,7 @@ app.use(bodyParser.json());
 app.use('/api', homesRouter); // for all homes requests send request to homes router
 
 if (process.env.NODE_ENV === "production") {
-    
-    // Set static folder where javascriptand css files will be served from
-    app.use(express.static("client/build"));
+    app.use(express.static('client/build'));
 }
-
 // Listen to server
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

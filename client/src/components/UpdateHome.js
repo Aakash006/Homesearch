@@ -12,6 +12,7 @@ class UpdateHome extends Component {
         this.state = {
             home: [],
             isLoaded: false,
+            email: '',
             streetAd: '',
             city: '',
             neighbourhood: '',
@@ -19,8 +20,14 @@ class UpdateHome extends Component {
             province: '',
             country: '',
             listedPrice: '',
-            soldPrice: ''
+            soldPrice: '',
+            mls: ''
         }
+    }
+
+    changeEmail = async event => {
+        const tempEmail = event.target.value;
+        this.setState({email: tempEmail});
     }
 
     changeStreetAd = async event => {
@@ -53,6 +60,11 @@ class UpdateHome extends Component {
         this.setState({country: tempCountry});
     }
 
+    changeMLS = async event => {
+        const tempMLS = event.target.value;
+        this.setState({mls: tempMLS});
+    }
+
     changeListed = async event => {
         const tempListed = event.target.value;
         this.setState({listedPrice: tempListed});
@@ -66,12 +78,14 @@ class UpdateHome extends Component {
     updateProperty = async (event) => {
         event.preventDefault();
         const payload = {
+            email: this.state.email !== '' ? this.state.email : this.state.home.email,
             streetAd: this.state.streetAd !== '' ? this.state.streetAd : this.state.home.streetAd,
             city: this.state.city !== '' ? this.state.city : this.state.home.city,
             neighbourhood: this.state.neighbourhood !== '' ? this.state.neighbourhood : this.state.home.neighbourhood,
             postalCode: this.state.postalCode !== '' ? this.state.postalCode : this.state.home.postalCode,
             province: this.state.province !== '' ? this.state.province : this.state.home.province,
             country: this.state.country !== '' ? this.state.country : this.state.home.country,
+            mls: this.state.mls !== '' ? this.state.mls : this.state.home.mls,
             listedPrice: this.state.listedPrice !== '' ? this.state.listedPrice : this.state.home.listedPrice,
             soldPrice: this.state.soldPrice !== '' ? this.state.soldPrice : this.state.home.soldPrice
         }
@@ -113,10 +127,17 @@ class UpdateHome extends Component {
                     <Button href="/" className="backButton" variant="dark"><BsFillCaretLeftFill/> Home</Button>
                 </Row>
                 <Form className="home-form" onSubmit={this.updateProperty}>
+                    <Form.Row>
+                        <Form.Group>
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control onChange={this.changeEmail} type="email" defaultValue={this.state.home.email} placeholder="email@example.com"/>
+                            <Form.Text className="text-muted">Optional if you would like to get notifications for updates about this property</Form.Text>
+                        </Form.Group>
+                    </Form.Row>
                     <Row>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Street Address</Form.Label>
+                                <Form.Label>Street Address *</Form.Label>
                                 <Form.Control onChange={this.changeStreetAd} defaultValue={this.state.home.streetAd} required/>
                             </Form.Group>
                         </Col>
@@ -128,7 +149,7 @@ class UpdateHome extends Component {
                         </Col>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Neighbourhood</Form.Label>
+                                <Form.Label>Neighbourhood *</Form.Label>
                                 <Form.Control onChange={this.changeNeighbourhood} defaultValue={this.state.home.neighbourhood} required/>
                             </Form.Group>
                         </Col>
@@ -160,7 +181,14 @@ class UpdateHome extends Component {
                     <Row>
                         <Col>
                             <Form.Group>
-                                <Form.Label>Listed Price</Form.Label>
+                                <Form.Label>MLS Number</Form.Label>
+                                <Form.Control onChange={this.changeMLS} defaultValue={this.state.home.mls}/>
+                            </Form.Group>
+                        </Col>
+
+                        <Col>
+                            <Form.Group>
+                                <Form.Label>Listed Price *</Form.Label>
                                 <Form.Control onChange={this.changeListed} defaultValue={this.state.home.listedPrice} required/>
                             </Form.Group>
                         </Col>

@@ -14,7 +14,8 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Antic Slab', serif;
+  font-family: 'Overpass', sans-serif;
 }
 
 .App-header {
@@ -64,7 +65,7 @@ body {
   font-size: 22px;
 }
 
-.updateBtn, .deleteBtn {
+.updateBtn, .deleteBtn, .addMlsBtn {
   margin-top: 5%;
   margin-left: 5%;
 }
@@ -79,7 +80,9 @@ body {
 }
 
 .navLink {
-  font-size: 25px;
+  font-size: 23px;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .pageTitle {
@@ -106,6 +109,12 @@ body {
     right: -45%;
 }
 
+.updateMLS {
+  margin-left: 5px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
 .neighbourhoodDD {
     margin-top: 2%;
     height: 50%;
@@ -123,4 +132,36 @@ body {
     position: relative;
     right: -30%;
     font-size: 60px;
+}
+
+.searchTitle {
+  margin-top: 2%;
+  font-weight: bold;
+  position: relative;
+  right: -30%;
+  font-size: 40px;
+}
+
+.searchBar {
+  font-size: 25px;
+  position: relative;
+  right: -30%;
+  margin-top: 20px;
+  background:"#F2F1F9";
+  border-radius: 30px;
+}
+
+.searchBtn {
+  margin-top: -5px;
+  position: relative;
+  font-size: 20px;
+  border-radius: 30px;
+  right: -32%;
+}
+
+.activeNavLink {
+  color: red;
+  font-size: 23px;
+  align-items: center;
+  margin-left: 10px;
 }

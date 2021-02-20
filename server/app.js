@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 app.use('/api', homesRouter); // for all homes requests send request to homes router
 
 if (process.env.NODE_ENV === "production") {
+    
     // Set static folder where javascriptand css files will be served from
     app.use(express.static("client/build"));
 }

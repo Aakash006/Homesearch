@@ -25,7 +25,7 @@ app.use('/api', homesRouter); // for all homes requests send request to homes ro
 if (process.env.NODE_ENV === "production") {
 
     // set static file with js and css
-    app.use(path.static('client/build'));
+    app.use(express.static('client/build'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(_dirname, '../client', 'build', 'index.html'));

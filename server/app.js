@@ -5,17 +5,13 @@ const homesRouter = require('./routes/homes');
 const cors = require('cors');
 const path = require('path');
 require('dotenv/config');
-const __dirname = path.resolve(path.dirname(''));
-
 const app = express();
 
 const apiPort = process.env.PORT || 9000;
 
 // Connect to DB
-mongoose.connect(process.env.MONGODB_ATLAS, {useNewUrlParser:true});
-const con = mongoose.connection;
-
-con.on('open', function () {
+mongoose.connect(process.env.MONGODB_ATLAS || "mongodb://localhost/homesearch", {useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.connection.on('connected', function () {
     console.log('Connected to db');
 });
 

@@ -27,6 +27,7 @@ class AveragePrice extends Component {
         });
     }
 
+    // choose neighbourhood and get average price for it
     choseNeighbourhood = async (name) => {
         this.setState({choosenNeighbourhood: name, isLoaded: false});
         await api.getAverage(name).then(results => {

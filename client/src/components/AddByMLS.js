@@ -17,12 +17,14 @@ class SearchMLS extends Component {
         }
     }
 
+    // Change mls state
     changeMLS = async (event) => {
         let tempMls = event.target.value;
         tempMls = tempMls.replace(/\s+/g, '');
         this.setState({mlsNum : tempMls});
     }
 
+    // search home that is in the search bar
     searchHouse = async () => {
         this.setState({searchBtnPressed: true, loading: true});
         await fetch(`https://realtor-canadian-real-estate.p.rapidapi.com/properties/list-by-mls?ReferenceNumber=${this.state.mlsNum}&CultureId=1`, {
@@ -38,6 +40,7 @@ class SearchMLS extends Component {
         });
     }
 
+    // add home when add button clicked on a homes card
     addHome = async (home) => {
         const payload = {
             email: null,
@@ -66,6 +69,7 @@ class SearchMLS extends Component {
         });
     }
 
+    // parse the address that is retrieved from the Relator API into a format that can be sent as a payload to the backend
     parseAddress = (address, price, postalCode) => {
         let pipeIndex = address.indexOf("|");
         let streetAd = address.substring(0, pipeIndex);

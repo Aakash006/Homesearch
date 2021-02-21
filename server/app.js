@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === "production") {
     // set static file with js and css
     app.use(express.static('client/build'));
 
+    // set requests for html files
     app.get('*', (req, res) => {
         res.sendFile(path.join(path.resolve(path.dirname('')), 'client', 'build', 'index.html'));
     });

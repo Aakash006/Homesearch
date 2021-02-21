@@ -1,5 +1,5 @@
 # **Homesearch**
-This application is to help users who are in the market for a house to keep track of houses they like and also keep track of the average price that the houses in their desired area are being sold at. Users can add, update and remove houses that are in their watch list. They can add the address with the neighbourhood the house is in and the listed price and sold price with it. Additionally, if a house is sold after they added it to their watchlist, they can update the house's information with the sold price. A key feature of this application is the ability to show the average price of houses in a neighbourhood and this depends on the price that houses in the watchlist were sold at in the particular neighbourhood. A average price will only be shown if at least house in the neighbourhood has been sold. The application was developed using **MongoDB**, **Express.js**, **React.js** and **Node.js**.
+This application is to help users who are in the market for a house to keep track of houses they like and also keep track of the average price that the houses in their desired area are being sold at. Users can add, update and remove houses that are in their watch list. They can add the address with the neighbourhood the house is in and the listed price and sold price with it. An user can also add a house through its MLS number if they know the MLS number which is assigned to each property. Additionally, if a house is sold after they added it to their watchlist, they can update the house's information with the sold price. A key feature of this application is the ability to show the average price of houses in a neighbourhood and this depends on the price that houses in the watchlist were sold at in the particular neighbourhood. An average price will only be shown if at least house in the neighbourhood has been sold. The application was developed using **MongoDB**, **Express.js**, **React.js** and **Node.js**.
 
 ## **How is works**
 
@@ -8,12 +8,26 @@ This application is to help users who are in the market for a house to keep trac
 <img src="pictures/add1.png"/>
 <br></br>
 
-**Step 2**: Add the information into the input fields (Street Address, Neighbourhood and Listed Price are required fields) and click the ‘Create’ button and a success message should show up at the top right hand corner of the page indicating the the property was added, then after click the ‘Home’ button.
+**Step 2**: Add the information into the input fields (Street Address, Neighbourhood and Listed Price are required fields). If you would like to get emails like when the property has been added to your watchlist, if its been updated or deleted from your watchlist then enter your email address in the 'Email Address' field. Then click the ‘Create’ button and a success message should show up at the top right hand corner of the page indicating the the property was added, then after click the ‘Home’ button.
 <img src="pictures/add2.PNG"/>
 <br></br>
 
 **The property will be added to your watchlist**
 <img src="pictures/add3.PNG"/>
+
+#### You can also add houses by searching a houses MLS number:
+**Step 1**: Click the ‘Add By MLS #’ link on the navigation bar.<br></br>
+<img src="pictures/add4.PNG" width="300px"/>
+<br></br>
+
+**Step 2**: Enter the MLS number of the house you would like to add and click the blue search button and if a house with the MLS number exists, it will show up in the results. Then to add the house, click the 'Add' button on the houses card.<br></br>
+<img src="pictures/add5.PNG" width="300px"/>
+<br></br>
+
+**The property will be added to your watchlist**<br></br>
+<img src="pictures/add6.PNG" width="300px"/>
+<br></br>
+
 <br></br>
 
 ### *Updating a property*

@@ -16,6 +16,7 @@ class Home extends Component {
         }
     }
 
+    // get all the homes in the watchlist
     refreshHouses = async () => {
         await api.getHomes().then(results => {
             this.setState({
@@ -31,6 +32,7 @@ class Home extends Component {
         this.refreshHouses();
     }
 
+    // delete home in the watchlist
     deleteHouse = async (id) => {
         await api.deleteHome(id).then(results => {
             if (results.data.success === true) {

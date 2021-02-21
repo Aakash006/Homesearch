@@ -25,56 +25,67 @@ class UpdateHome extends Component {
         }
     }
 
+    // change state of email
     changeEmail = async event => {
         const tempEmail = event.target.value;
         this.setState({email: tempEmail});
     }
 
+    // change state of street Address
     changeStreetAd = async event => {
         const tempStreetAd = event.target.value;
         this.setState({streetAd: tempStreetAd});
     }
 
+    // change state of city
     changeCity = async event => {
         const tempCity = event.target.value;
         this.setState({city: tempCity});
     }
 
+    // change state of neighbourhood
     changeNeighbourhood = async event => {
         const tempNeighbourhood = event.target.value;
         this.setState({neighbourhood: tempNeighbourhood});
     }
 
+    // change state of postal code
     changePostal = async event => {
         const tempPostal = event.target.value;
         this.setState({postalCode: tempPostal});
     }
 
+    // change state of province
     changeProvince = async event => {
         const tempProvince = event.target.value;
         this.setState({province: tempProvince});
     }
 
+    // change state of country
     changeCountry = async event => {
         const tempCountry = event.target.value;
         this.setState({country: tempCountry});
     }
 
+    // change state of mls
     changeMLS = async event => {
         const tempMLS = event.target.value;
         this.setState({mls: tempMLS});
     }
 
+    // change state of listed price
     changeListed = async event => {
         const tempListed = event.target.value;
         this.setState({listedPrice: tempListed});
     }
 
+    // change state of sold price
     changeSold = async event => {
         const tempSold = event.target.value;
         this.setState({soldPrice: tempSold});
     }
 
+    // does a put request with the payload as the property to be updated in the watchlist
     updateProperty = async (event) => {
         event.preventDefault();
         const payload = {

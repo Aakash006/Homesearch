@@ -21,11 +21,11 @@ This application is to help users who are in the market for a house to keep trac
 <br></br>
 
 **Step 2**: Enter the MLS number of the house you would like to add and click the blue search button and if a house with the MLS number exists, it will show up in the results. Then to add the house, click the 'Add' button on the houses card.<br></br>
-<img src="pictures/add5.png" width="400px"/>
+<img src="pictures/add5.png" width="500px"/>
 <br></br>
 
 **The property will be added to your watchlist**<br></br>
-<img src="pictures/add6.png" width="500px"/>
+<img src="pictures/add6.png" width="600px"/>
 <br></br>
 
 <br></br>

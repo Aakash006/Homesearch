@@ -1,15 +1,12 @@
 import axios from 'axios';
-const api = axios.create({
-    baseURL: "/api",
-});
 
-export const createHome = payload => api.post(`/home`, payload);
-export const getHomes = () => api.get(`/homes`);
-export const getNeighbourhoods = () => api.get(`/neighbourhoods`);
-export const updateHome = (id, payload) => api.put(`/home/${id}`, payload);
-export const deleteHome = id => api.delete(`/home/${id}`);
-export const getHomeByID = id => api.get(`/home/${id}`);
-export const getAverage = neighbourhood => api.get(`/average/${neighbourhood}`);
+export const createHome = payload => axios.post(`/api/home`, payload);
+export const getHomes = () => axios.get(`/api/homes`);
+export const getNeighbourhoods = () => axios.get(`/api/neighbourhoods`);
+export const updateHome = (id, payload) => axios.put(`/api/home/${id}`, payload);
+export const deleteHome = id => axios.delete(`/api/home/${id}`);
+export const getHomeByID = id => axios.get(`/api/home/${id}`);
+export const getAverage = neighbourhood => axios.get(`/api/average/${neighbourhood}`);
 
 const apis = {
     createHome,

@@ -10,8 +10,8 @@ const app = express();
 const apiPort = process.env.PORT || 9000;
 
 // Connect to DB
-mongoose.connect(process.env.MONGODB_ATLAS, {useNewUrlParser:true, useUnifiedTopology: true});
-mongoose.connection.on('connected', function () {
+mongoose.connect(process.env.MONGODB_ATLAS || "mongodb://localhost/homesearch", {useNewUrlParser:true});
+mongoose.connection.on('open', function () {
     console.log('Connected to db');
 });
 
@@ -25,7 +25,7 @@ app.use('/api', homesRouter); // for all homes requests send request to homes ro
 if (process.env.NODE_ENV === "production") {
 
     // set static file with js and css
-    app.use(path.static('../client/build'));
+    app.use(path.static('client/build'));
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(_dirname, '../client', 'build', 'index.html'));

@@ -7,7 +7,7 @@ sgMail.setApiKey(process.env.SENDGRID_KEY)
 
 // This method retrieves all the properties that are in a users watchlist from the database
 getHomes = async (req, res) => {
-    console.log("test if api caled");
+    console.log("Get houses");
     const homes = await Home.find({}, (err, response) => {
         if (err) {
             return res.status(400).json({message: 'No properties found'});

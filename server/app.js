@@ -10,7 +10,6 @@ const app = express();
 const apiPort = process.env.PORT || 9000;
 
 // Connect to DB
-console.log(process.env.MONGODB_ATLAS);
 mongoose.connect(process.env.MONGODB_ATLAS || "mongodb://localhost/homesearch", {useNewUrlParser:true});
 mongoose.connection.on('open', function () {
     console.log('Connected to db');

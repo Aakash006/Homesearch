@@ -7,7 +7,7 @@ const path = require('path');
 require('dotenv/config');
 const app = express();
 
-const apiPort = 9000;
+const apiPort = process.env.PORT || 9000;
 
 // Connect to DB
 mongoose.connect(process.env.MONGODB_ATLAS || "mongodb://localhost/homesearch", {useNewUrlParser:true});

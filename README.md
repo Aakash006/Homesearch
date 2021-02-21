@@ -17,15 +17,15 @@ This application is to help users who are in the market for a house to keep trac
 
 #### You can also add houses by searching a houses MLS number:
 **Step 1**: Click the ‘Add By MLS #’ link on the navigation bar.<br></br>
-<img src="pictures/add4.PNG" width="300px"/>
+<img src="pictures/add4.png" width="300px"/>
 <br></br>
 
 **Step 2**: Enter the MLS number of the house you would like to add and click the blue search button and if a house with the MLS number exists, it will show up in the results. Then to add the house, click the 'Add' button on the houses card.<br></br>
-<img src="pictures/add5.PNG" width="300px"/>
+<img src="pictures/add5.png" width="300px"/>
 <br></br>
 
 **The property will be added to your watchlist**<br></br>
-<img src="pictures/add6.PNG" width="300px"/>
+<img src="pictures/add6.png" width="300px"/>
 <br></br>
 
 <br></br>

@@ -24,12 +24,16 @@ app.use('/api', homesRouter); // for all homes requests send request to homes ro
 
 if (process.env.NODE_ENV === "production") {
 
-    //set static file with js and css
-    app.use(express.static("client/build"));
+    // set static file with js and css
+    app.use(path.static('../client/build'));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(_dirname, '../client/build/index.html'));
+        res.sendFile(path.resolve(_dirname, '../client', 'build', 'index.html'));
     });
+    
 }
+
+
+
 // Listen to server
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`));

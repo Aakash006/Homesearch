@@ -17,15 +17,15 @@ This application is to help users who are in the market for a house to keep trac
 
 #### You can also add houses by searching a houses MLS number:
 **Step 1**: Click the ‘Add By MLS #’ link on the navigation bar.<br></br>
-<img src="pictures/add4.png" width="300px"/>
+<img src="pictures/add4.png" width="500px"/>
 <br></br>
 
 **Step 2**: Enter the MLS number of the house you would like to add and click the blue search button and if a house with the MLS number exists, it will show up in the results. Then to add the house, click the 'Add' button on the houses card.<br></br>
-<img src="pictures/add5.png" width="300px"/>
+<img src="pictures/add5.png" width="400px"/>
 <br></br>
 
 **The property will be added to your watchlist**<br></br>
-<img src="pictures/add6.png" width="300px"/>
+<img src="pictures/add6.png" width="500px"/>
 <br></br>
 
 <br></br>
@@ -55,10 +55,10 @@ This application is to help users who are in the market for a house to keep trac
 **For a average house price in a neighbourhood to be shown, make sure the houses in the neighbourhood have a sold price**
 
 **Step 1**: Check if houses in the neighbourhood have a price at which they were sold at.
-<img src="pictures/avg1.png" width="400px"/>
+<img src="pictures/avg1.png" width="600px"/>
 <br></br>
 
-**Step 2**: Navigate to the Average Price page by clicking on the Average Price link in the navigation bar.
+**Step 2**: Navigate to the Average Price page by clicking on the 'Average Price' link in the navigation bar.
 
 **Step 3:** In the 'Average Price' page, click on the 'Neighbourhood' dropdown and select a neighbourhood.<br></br>
 <img src="pictures/avg2.PNG" width="500px"/>

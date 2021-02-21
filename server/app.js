@@ -10,7 +10,7 @@ const app = express();
 const apiPort = process.env.PORT || 9000;
 
 // Connect to DB
-mongoose.connect(process.env.MONGODB_ATLAS || "mongodb://localhost/homesearch", {useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_ATLAS, {useNewUrlParser:true, useUnifiedTopology: true});
 mongoose.connection.on('connected', function () {
     console.log('Connected to db');
 });
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 
     app.get('*', (req, res) => {
-        res.sendFile(path.resolve(_dirname, '../client', 'build', 'index.html'));
+        res.sendFile(path.resolve(_dirname, '../client/build/index.html'));
     });
 }
 // Listen to server

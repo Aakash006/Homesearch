@@ -70,7 +70,7 @@ This application is to help users who are in the market for a house to keep trac
 
 ### *Calculating the mortage for a house*
 **Step 1**: Click on the calculate button on the card of a house.
-<img src="pictures/cal1.PNG" width="300px"/>
+<img src="pictures/cal1.png" width="300px"/>
 <br>
 
 **Step 1**: By default, the frequency of payments is 12 months, pricipal value will be set to the listed price of the home, interest rate will be 5% and amortization period will be 25 years but you can change that according to your preferences and click 'Calculate' and you will be shown the monthly mortage.<br>

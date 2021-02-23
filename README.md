@@ -69,7 +69,7 @@ This application is to help users who are in the market for a house to keep trac
 <br>
 
 ### *Calculating the mortage for a house*
-**Step 1**: Click on the calculate button on the card of a house.
+**Step 1**: Click on the calculate button on the card of a house.<br>
 <img src="pictures/cal1.png" width="300px"/>
 <br>
 

@@ -1,5 +1,5 @@
 # **Homesearch**
-This application is to help users who are in the market for a house to keep track of houses they like and also keep track of the average price that the houses in their desired area are being sold at. Users can add, update and remove houses that are in their watch list. They can add the address with the neighbourhood the house is in and the listed price and sold price with it. An user can also add a house through its MLS number if they know the MLS number which is assigned to each property. Additionally, if a house is sold after they added it to their watchlist, they can update the house's information with the sold price. A key feature of this application is the ability to show the average price of houses in a neighbourhood and this depends on the price that houses in the watchlist were sold at in the particular neighbourhood. An average price will only be shown if at least house in the neighbourhood has been sold. The application was developed using **MongoDB**, **Express.js**, **React.js** and **Node.js**.
+This application is to help users who are in the market for a house to keep track of houses they like and also keep track of the average price that the houses in their desired area are being sold at. Users can add, update and remove houses that are in their watch list. They can add the address with the neighbourhood the house is in and the listed price and sold price with it. An user can also add a house through its MLS number if they know the MLS number which is assigned to each property. Additionally, if a house is sold after they added it to their watchlist, they can update the house's information with the sold price. A key feature of this application is the ability to show the average price of houses in a neighbourhood and this depends on the price that houses in the watchlist were sold at in the particular neighbourhood. An average price will only be shown if at least house in the neighbourhood has been sold. The application also enables a user to calculate the mortage for a house. The application was developed using **MongoDB**, **Express.js**, **React.js** and **Node.js**.
 
 ## **How is works**
 
@@ -66,4 +66,13 @@ This application is to help users who are in the market for a house to keep trac
 
 **Average price will be shown if there were houses sold in the neighbourhood**
 <img src="pictures/avg3.PNG" width="500px"/>
+<br>
+
+### *Calculating the mortage for a house*
+**Step 1**: Click on the calculate button on the card of a house.
+<img src="pictures/cal1.PNG" width="300px"/>
+<br>
+
+**Step 1**: By default, the frequency of payments is 12 months, pricipal value will be set to the listed price of the home, interest rate will be 5% and amortization period will be 25 years but you can change that according to your preferences and click 'Calculate' and you will be shown the monthly mortage.<br>
+<img src="pictures/cal2.PNG" width="500px"/>
 <br></br>

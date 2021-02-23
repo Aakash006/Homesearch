@@ -4,6 +4,7 @@ import { Button, Row, Col, Card, Container, Badge  } from "react-bootstrap";
 import api from "../api";
 import { BsFillTrashFill, BsPencilSquare } from "react-icons/bs";
 import { BiPlusMedical } from "react-icons/bi";
+import { FaCalculator } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -69,6 +70,7 @@ class Home extends Component {
                                         <Badge className="badge" pill variant="success">Listed Price: ${home.listedPrice}</Badge><br></br>
                                         {home.soldPrice > 0 ? <Badge className="badge" pill variant="danger">Sold Price: ${home.soldPrice}</Badge> : ''}
                                         <Row>
+                                            <Button className="calculateBtn" variant="success" href={`/calculate-mortage/${home._id}`}><FaCalculator/></Button>
                                             <Button className="updateBtn" href={`/update-home/${home._id}`}><BsPencilSquare/></Button>
                                             <Button className="deleteBtn" variant="danger" onClick={() => this.deleteHouse(home._id)}><BsFillTrashFill/></Button>
                                         </Row>

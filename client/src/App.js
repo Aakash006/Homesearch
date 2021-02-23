@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import AddHome from "./components/AddHome";
 import UpdateHome from "./components/UpdateHome";
 import AddByMLS from "./components/AddByMLS";
+import CalculateMortage from "./components/CalculateMortage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                     <Route exact path="/add-home" component={AddHome}/>
                     <Route exact path="/update-home/:id" component={UpdateHome}/>
                     <Route exact path="/search-mls" component={AddByMLS}/>
+                    <Route exact path="/calculate-mortage/:id" component={CalculateMortage}/>
                 </Switch>
             </Router>
         </div>

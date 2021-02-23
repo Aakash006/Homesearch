@@ -65,7 +65,7 @@ body {
   font-size: 22px;
 }
 
-.updateBtn, .deleteBtn, .addMlsBtn {
+.updateBtn, .deleteBtn, .addMlsBtn, .calculateBtn {
   margin-top: 5%;
   margin-left: 5%;
 }
@@ -164,4 +164,24 @@ body {
   font-size: 23px;
   align-items: center;
   margin-left: 10px;
+}
+
+.calTitle {
+  margin-top: 2%;
+  font-weight: bold;
+  position: relative;
+  font-size: 40px;
+}
+
+.askingPrice {
+  position: relative;
+  right: -30%;
+}
+
+.calBackButton {
+  margin-top: 2%;
+  height: 50%;
+  font-size: 20px;
+  position: relative;
+  right: -30%;
 }

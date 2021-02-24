@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import "../App.css";
-import { Button, Container, Row, Col, Card, Badge } from "react-bootstrap";
+import { Button, Container, Row, Col, Card, Badge, Spinner } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import { BiPlusMedical } from "react-icons/bi";
 import apis from "../api";
@@ -121,6 +121,10 @@ class SearchMLS extends Component {
                     }
                 </Row>
                 ) : ('')}
+                {this.state.loading === true ? 
+                (<div className="loadingGif"><Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner></div>) : ('')}
         </Container>
       </div>
       );
